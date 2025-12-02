@@ -1,1 +1,158 @@
-# Analysis-Data-Cereal
+# 🥣 **Cereal Analysis – KNIME Workflow**
+
+Analisis nutrisi, visualisasi data, dan klasifikasi kesehatan sereal
+
+---
+
+## 📌 **Deskripsi Proyek**
+
+Repository ini berisi **workflow KNIME Modern UI** untuk melakukan analisis pada dataset sereal (Cereals.csv).
+Tujuan proyek:
+
+1. **Membersihkan & mempersiapkan dataset**
+2. **Melakukan exploratory data analysis (EDA)**
+3. **Visualisasi nutrisi sereal (scatter plot, bar chart, histogram, pie chart)**
+4. **Membuat klasifikasi sederhana HEALTHY vs UNHEALTHY**
+5. **Memberikan insight yang mudah dipahami**
+
+Workflow ini sangat cocok untuk pemula KNIME, karena langkah-langkahnya dibuat **ringkas, modular, dan mudah dipelajari**.
+
+---
+
+## 📁 **Isi Repository**
+
+```
+📦 Cereal-Analysis-KNIME
+├── CerealWorkflow.knwf     → workflow KNIME Modern UI
+├── Cereals.csv             → dataset sereal
+├── README.md               → dokumentasi proyek
+```
+
+---
+
+## 🧠 **Alur Workflow (Ringkasan)**
+
+```
+CSV Reader
+ → Missing Value
+ → Column Filter
+ → Math Formula (opsional)
+ → Normalizer
+ → Rule Engine (Healthy/Unhealthy)
+        ↳ Bar Chart (Distribusi Health Status)
+        ↳ Pie Chart  (Proporsi Health Status)
+ → Scatter Plot (Visualisasi 2 variabel)
+ → Histogram (Distribusi numerik)
+```
+
+Model klasifikasi **opsional**, sehingga workflow tetap berjalan walau tanpa partitioning maupun machine learning.
+
+---
+
+## 🥼 **1. Data Preparation**
+
+### ✔ Node yang digunakan:
+
+* **CSV Reader**
+  Mengimpor dataset Cereals.csv.
+
+* **Missing Value**
+  Mengatasi data kosong secara aman:
+
+  * Numerik → *median*
+  * Kategori → *most frequent*
+
+* **Column Filter**
+  Menghapus kolom tidak penting atau non-numerik.
+
+* **Math Formula** (opsional)
+  Contoh menambah kolom:
+
+  ```
+  health_score = fiber * 2 - sugars
+  ```
+
+---
+
+## ⚙️ **2. Data Processing**
+
+* **Normalizer**
+  Menyamakan skala data numerik untuk visualisasi yang lebih jelas.
+
+* **Rule Engine**
+  Membuat label kategori kesehatan:
+
+  ```
+  calories < 100 => "HEALTHY"
+  TRUE => "UNHEALTHY"
+  ```
+
+Label ini digunakan untuk bar chart & pie chart.
+
+---
+
+## 📊 **3. Visualisasi**
+
+Visualisasi berbasis KNIME Modern UI (JavaScript views).
+
+### 🔹 Scatter Plot
+
+Membandingkan dua fitur, misal:
+`Sugars` vs `Rating`.
+
+### 🔹 Histogram
+
+Distribusi:
+`Sugars`, `Calories`, dll.
+
+### 🔹 Bar Chart
+
+Total HEALTHY vs UNHEALTHY.
+
+### 🔹 Pie Chart
+
+Proporsi visual kategori kesehatan.
+
+---
+
+## 🧩 **4. Klasifikasi (Opsional)**
+
+Workflow ini menggunakan klasifikasi sederhana berbasis **Rule Engine**, bukan machine learning, sehingga:
+
+✔ Tidak membutuhkan Partitioning
+✔ Tidak memerlukan Decision Tree
+✔ Cocok untuk pemula KNIME
+✔ Tetap memenuhi poin “bonus: klasifikasi”
+
+Kategori dibuat berdasarkan batas kesehatan sederhana (kalori).
+
+---
+
+## 📈 **5. Insight Utama**
+
+Beberapa temuan dari analisis:
+
+* Sereal dengan **kalori rendah (<100)** cenderung lebih sehat dan lebih disukai.
+* Kadar gula memiliki pengaruh besar terhadap kualitas dan persepsi konsumen.
+* Histogram menunjukkan sebagian besar sereal memiliki **kandungan gula cukup tinggi**.
+* Scatter plot memperlihatkan hubungan terbalik antara **sugars** dan **rating**.
+* Porsi HEALTHY lebih sedikit dibandingkan UNHEALTHY (tergantung dataset yang diunggah).
+
+---
+
+## ▶️ **Cara Menjalankan Workflow**
+
+1. Buka **KNIME Analytics Platform 5.8 (Modern UI)**
+2. Import file:
+   **File → Import → KNIME Workflow → pilih CerealWorkflow.knwf**
+3. Pastikan file `Cereals.csv` berada di folder yang sama
+4. Jalankan node satu per satu atau tekan **Run All**
+5. Buka panel visualisasi setiap node untuk melihat insight
+
+---
+
+## 📜 **Lisensi**
+
+Proyek ini bersifat bebas digunakan untuk pembelajaran, tugas kuliah, atau penelitian.
+
+---
