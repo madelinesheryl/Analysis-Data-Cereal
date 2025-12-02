@@ -137,17 +137,6 @@ Beberapa temuan dari analisis:
 
 ---
 
-## ▶️ **Cara Menjalankan Workflow**
-
-1. Buka **KNIME Analytics Platform 5.8 (Modern UI)**
-2. Import file:
-   **File → Import → KNIME Workflow → pilih CerealWorkflow.knwf**
-3. Pastikan file `Cereals.csv` berada di folder yang sama
-4. Jalankan node satu per satu atau tekan **Run All**
-5. Buka panel visualisasi setiap node untuk melihat insight
-
----
-
 ## 📜 **Lisensi**
 
 Proyek ini bersifat bebas digunakan untuk pembelajaran, tugas kuliah, atau penelitian.
