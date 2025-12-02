@@ -65,8 +65,8 @@ Model klasifikasi **opsional**, sehingga workflow tetap berjalan walau tanpa par
 * **Column Filter**
   Menghapus kolom tidak penting atau non-numerik.
 
-* **Math Formula** (opsional)
-  Contoh menambah kolom:
+* **Math Formula**
+  Menghitung Heath Score
 
   ```
   health_score = fiber * 2 - sugars
@@ -93,12 +93,9 @@ Label ini digunakan untuk bar chart & pie chart.
 
 ## 📊 **3. Visualisasi**
 
-Visualisasi berbasis KNIME Modern UI (JavaScript views).
-
 ### 🔹 Scatter Plot
 
-Membandingkan dua fitur, misal:
-`Sugars` vs `Rating`.
+Membandingkan `Sugars` vs `Rating`.
 
 ### 🔹 Histogram
 
