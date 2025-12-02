@@ -96,26 +96,46 @@ Label ini digunakan untuk bar chart & pie chart.
 ### 🔹 Scatter Plot
 
 Membandingkan `Sugars` vs `Rating`.
+Insight yang muncul:
+* Semakin tinggi **gula**, biasanya **rating cenderung turun**.
+  Konsumen tidak terlalu menyukai sereal yang terlalu manis.
+* HEALTHY (kalori rendah) sering muncul di area gula rendah.
 
 ### 🔹 Histogram
 
 Distribusi:
 `Sugars`, `Calories`, dll.
+* Histogram gula umumnya miring ke kanan → banyak sereal manis.
+* Histogram kalori menunjukkan distribusi berat antara HEALTHY dan UNHEALTHY.
+* Histogram fiber sering didominasi nilai rendah → banyak sereal rendah serat.
 
 ### 🔹 Bar Chart
 
 Total HEALTHY vs UNHEALTHY.
 
+* Biasanya kategori **UNHEALTHY** lebih banyak.
+* Menunjukkan bahwa mayoritas sereal memiliki kalori di atas 100 per serving.
+* Konsumen harus lebih selektif untuk memilih sereal rendah kalori.
+
 ### 🔹 Pie Chart
 
 Proporsi visual kategori kesehatan.
+* Pie chart mem visualisasikan persentase HEALTHY dan UNHEALTHY.
+* Jika HEALTHY kecil → hanya sebagian kecil produk yang memenuhi standar rendah kalori.
 
 ---
 
-## 🧩 **4. Klasifikasi**
+## 🧩 **4. Klasifikasi (Rule Engine)**
+Workflow menggunakan klasifikasi deterministik sederhana:
+
+```
+calories < 100 => "HEALTHY"
+TRUE => "UNHEALTHY"
+```
+
+Kategori ini membantu memetakan produk sereal menjadi dua kelompok kesehatan.
 
 Workflow ini menggunakan klasifikasi sederhana berbasis **Rule Engine**, bukan machine learning, sehingga:
-
 ✔ Tidak membutuhkan Partitioning
 ✔ Tidak memerlukan Decision Tree
 ✔ Cocok untuk pemula KNIME
@@ -137,7 +157,7 @@ Beberapa temuan dari analisis:
 
 ---
 
-# 🏁 **7. Kesimpulan**
+# 🏁 **6. Kesimpulan**
 
 Berdasarkan seluruh analisis dan visualisasi:
 
