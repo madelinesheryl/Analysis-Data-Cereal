@@ -137,8 +137,15 @@ Beberapa temuan dari analisis:
 
 ---
 
-## 📜 **Lisensi**
+# 🏁 **7. Kesimpulan**
 
-Proyek ini bersifat bebas digunakan untuk pembelajaran, tugas kuliah, atau penelitian.
+Berdasarkan seluruh analisis dan visualisasi:
+
+**Mayoritas produk sereal di pasaran tidak termasuk kategori HEALTHY**, terutama karena kandungan kalori dan gula yang cukup tinggi.
+Namun, masih ada sebagian produk yang lebih sehat—biasanya rendah kalori, rendah gula, dan memiliki sedikit serat tambahan.
+
+Visualisasi scatter plot, histogram, bar chart, dan pie chart memperlihatkan bahwa **nutrisi memiliki pengaruh nyata terhadap persepsi konsumen**, terutama gula dan kalori.
+Dengan workflow KNIME ini, pengguna dapat memahami pola nutrisi, mengelompokkan produk berdasarkan kesehatan, dan mendapatkan insight yang mudah untuk dipresentasikan atau digunakan dalam laporan.
 
 ---
+
