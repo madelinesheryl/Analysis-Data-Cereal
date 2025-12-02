@@ -112,7 +112,7 @@ Proporsi visual kategori kesehatan.
 
 ---
 
-## 🧩 **4. Klasifikasi (Opsional)**
+## 🧩 **4. Klasifikasi**
 
 Workflow ini menggunakan klasifikasi sederhana berbasis **Rule Engine**, bukan machine learning, sehingga:
 
