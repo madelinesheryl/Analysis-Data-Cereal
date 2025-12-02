@@ -23,8 +23,8 @@ Workflow ini sangat cocok untuk pemula KNIME, karena langkah-langkahnya dibuat *
 
 ```
 📦 Cereal-Analysis-KNIME
-├── CerealWorkflow.knwf     → workflow KNIME Modern UI
-├── Cereals.csv             → dataset sereal
+├── cerealworkflow.knwf     → workflow KNIME Modern UI
+├── Cereals.csv             → dataset cereal
 ├── README.md               → dokumentasi proyek
 ```
 
