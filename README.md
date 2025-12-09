@@ -1,21 +1,25 @@
 # 🥣 **Cereal Analysis – KNIME Workflow**
 
-Analisis nutrisi, visualisasi data, dan klasifikasi kesehatan sereal
+Analisis nutrisi, visualisasi data, dan klasifikasi kesehatan sereal berdasarkan kandungan **fiber**, **sugar**, dan nilai **normalisasi**.
 
 ---
 
 ## 📌 **Deskripsi Proyek**
 
-Repository ini berisi **workflow KNIME Modern UI** untuk melakukan analisis pada dataset sereal (Cereals.csv).
-Tujuan proyek:
+Repository ini berisi **workflow KNIME Modern UI** untuk melakukan analisis pada dataset sereal *Cereals.csv*.
+Tujuan utama workflow:
 
 1. **Membersihkan & mempersiapkan dataset**
 2. **Melakukan exploratory data analysis (EDA)**
-3. **Visualisasi nutrisi sereal (scatter plot, bar chart, histogram, pie chart)**
-4. **Membuat klasifikasi sederhana HEALTHY vs UNHEALTHY**
-5. **Memberikan insight yang mudah dipahami**
+3. **Menghitung metric sederhana menggunakan Math Formula**
+4. **Visualisasi nutrisi: bar chart, pie chart, histogram, scatter plot**
+5. **Membuat dua jenis klasifikasi:**
 
-Workflow ini sangat cocok untuk pemula KNIME, karena langkah-langkahnya dibuat **ringkas, modular, dan mudah dipelajari**.
+   * **Healthy vs Not Healthy** (berdasarkan fiber & sugars)
+   * **Low Sugar vs High Sugar** (berdasarkan nilai sugar yang sudah dinormalisasi)
+6. **Memberikan insight komprehensif tentang nutrisi sereal**
+
+Workflow dibuat ringkas, modular, dan mudah dipahami sehingga cocok untuk pemula KNIME.
 
 ---
 
@@ -24,7 +28,7 @@ Workflow ini sangat cocok untuk pemula KNIME, karena langkah-langkahnya dibuat *
 ```
 📦 Cereal-Analysis-KNIME
 ├── cerealworkflow.knwf     → workflow KNIME Modern UI
-├── Cereals.csv             → dataset cereal
+├── Cereals.csv             → dataset sereal
 ├── README.md               → dokumentasi proyek
 ```
 
@@ -36,136 +40,179 @@ Workflow ini sangat cocok untuk pemula KNIME, karena langkah-langkahnya dibuat *
 CSV Reader
  → Missing Value
  → Column Filter
- → Math Formula (opsional)
+ → Math Formula
+ → Rule Engine (Healthy / Not Healthy)
+        ↳ Bar Chart (Distribusi Kesehatan)
+        ↳ Pie Chart (Proporsi Healthy)
  → Normalizer
- → Rule Engine (Healthy/Unhealthy)
-        ↳ Bar Chart (Distribusi Health Status)
-        ↳ Pie Chart  (Proporsi Health Status)
- → Scatter Plot (Visualisasi 2 variabel)
- → Histogram (Distribusi numerik)
+        ↳ Histogram (Distribusi Numerik)
+        ↳ Scatter Plot (Perbandingan Variabel)
+ → Rule Engine (Low Sugar / High Sugar)
+        ↳ Bar Chart (Klasifikasi Gula)
 ```
 
-Model klasifikasi **opsional**, sehingga workflow tetap berjalan walau tanpa partitioning maupun machine learning.
-
 ---
 
-## 🥼 **1. Data Preparation**
+# 🥼 **1. Data Preparation**
 
-### ✔ Node yang digunakan:
+### ✔ **CSV Reader**
 
-* **CSV Reader**
-  Mengimpor dataset Cereals.csv.
+Mengimpor dataset *Cereals.csv* ke dalam KNIME.
 
-* **Missing Value**
-  Mengatasi data kosong secara aman:
+### ✔ **Missing Value**
 
-  * Numerik → *median*
-  * Kategori → *most frequent*
+Menangani missing value:
 
-* **Column Filter**
-  Menghapus kolom tidak penting atau non-numerik.
+* Kolom numerik → *median*
+* Kolom kategorikal → *most frequent*
 
-* **Math Formula**
-  Menghitung Heath Score
+Tujuannya agar visualisasi dan perhitungan tidak error.
 
-  ```
-  health_score = fiber * 2 - sugars
-  ```
+### ✔ **Column Filter**
 
----
+Menghapus kolom tidak relevan atau kolom kategori yang tidak digunakan dalam perhitungan.
 
-## ⚙️ **2. Data Processing**
+### ✔ **Math Formula**
 
-* **Normalizer**
-  Menyamakan skala data numerik untuk visualisasi yang lebih jelas.
-
-* **Rule Engine**
-  Membuat label kategori kesehatan:
-
-  ```
-  calories < 100 => "HEALTHY"
-  TRUE => "UNHEALTHY"
-  ```
-
-Label ini digunakan untuk bar chart & pie chart.
-
----
-
-## 📊 **3. Visualisasi**
-
-### 🔹 Scatter Plot
-
-Membandingkan `Sugars` vs `Rating`.
-Insight yang muncul:
-* Semakin tinggi **gula**, biasanya **rating cenderung turun**.
-  Konsumen tidak terlalu menyukai sereal yang terlalu manis.
-* HEALTHY (kalori rendah) sering muncul di area gula rendah.
-
-### 🔹 Histogram
-
-Distribusi:
-`Sugars`, `Calories`, dll.
-* Histogram gula umumnya miring ke kanan → banyak sereal manis.
-* Histogram kalori menunjukkan distribusi berat antara HEALTHY dan UNHEALTHY.
-* Histogram fiber sering didominasi nilai rendah → banyak sereal rendah serat.
-
-### 🔹 Bar Chart
-
-Total HEALTHY vs UNHEALTHY.
-
-* Biasanya kategori **UNHEALTHY** lebih banyak.
-* Menunjukkan bahwa mayoritas sereal memiliki kalori di atas 100 per serving.
-* Konsumen harus lebih selektif untuk memilih sereal rendah kalori.
-
-### 🔹 Pie Chart
-
-Proporsi visual kategori kesehatan.
-* Pie chart mem visualisasikan persentase HEALTHY dan UNHEALTHY.
-* Jika HEALTHY kecil → hanya sebagian kecil produk yang memenuhi standar rendah kalori.
-
----
-
-## 🧩 **4. Klasifikasi (Rule Engine)**
-Workflow menggunakan klasifikasi deterministik sederhana:
+Menghitung **metric nutrisi sederhana** menggunakan formula:
 
 ```
-calories < 100 => "HEALTHY"
-TRUE => "UNHEALTHY"
+$fiber$ * 2 - $sugars$
 ```
 
-Kategori ini membantu memetakan produk sereal menjadi dua kelompok kesehatan.
+Nilai ini tidak digunakan sebagai klasifikasi, tetapi membantu:
 
-Workflow ini menggunakan klasifikasi sederhana berbasis **Rule Engine**, bukan machine learning, sehingga:
-✔ Tidak membutuhkan Partitioning
-✔ Tidak memerlukan Decision Tree
-✔ Cocok untuk pemula KNIME
-✔ Tetap memenuhi poin “bonus: klasifikasi”
-
-Kategori dibuat berdasarkan batas kesehatan sederhana (kalori).
+* Memberikan pemahaman tambahan tentang keseimbangan serat & gula
+* Menambah variabel tambahan untuk analisis
 
 ---
 
-## 📈 **5. Insight Utama**
+# ⚙️ **2. Data Processing**
 
-Beberapa temuan dari analisis:
+## ✔ **Rule Engine 1 – Klasifikasi Healthy / Not Healthy**
 
-* Sereal dengan **kalori rendah (<100)** cenderung lebih sehat dan lebih disukai.
-* Kadar gula memiliki pengaruh besar terhadap kualitas dan persepsi konsumen.
-* Histogram menunjukkan sebagian besar sereal memiliki **kandungan gula cukup tinggi**.
-* Scatter plot memperlihatkan hubungan terbalik antara **sugars** dan **rating**.
-* Porsi HEALTHY lebih sedikit dibandingkan UNHEALTHY (tergantung dataset yang diunggah).
+Aturan yang digunakan:
+
+```
+$fiber$ >= 5 AND $sugars$ <= 6 => "Healthy"
+TRUE => "Not Healthy"
+```
+
+Interpretasi:
+
+* Produk dikategorikan **Healthy** jika tinggi serat **≥ 5** dan rendah gula **≤ 6**
+* Selain itu → **Not Healthy**
+
+Hasil kategori ini digunakan untuk:
+
+* Bar Chart distribusi kesehatan
+* Pie Chart proporsi Healthy & Not Healthy
+
+---
+
+## ✔ **Normalizer**
+
+Menormalkan kolom numerik ke skala 0–1 sehingga lebih mudah dianalisis di scatter plot & histogram.
+
+---
+
+## ✔ **Rule Engine 2 – Klasifikasi Low Sugar / High Sugar**
+
+Setelah normalisasi, dibuat klasifikasi kedua:
+
+```
+$sugars$ <= 0.468 => "Low Sugar"
+TRUE => "High Sugar"
+```
+
+Catatan:
+
+* Batas **0.468** berasal dari nilai *sugars* yang sudah dinormalisasi
+* Klasifikasi ini menunjukkan bagaimana distribusi gula setelah skala diseragamkan
+
+Hasilnya divisualisasikan dengan Bar Chart.
+
+---
+
+# 📊 **3. Visualisasi**
+
+### 🔹 **Bar Chart – Healthy vs Not Healthy**
+
+Menampilkan jumlah produk pada kedua kategori.
+Biasanya kategori **Not Healthy** lebih mendominasi.
+
+### 🔹 **Pie Chart**
+
+Memvisualisasikan presentase Healthy vs Not Healthy.
+
+### 🔹 **Histogram**
+
+Menampilkan distribusi variabel numerik seperti:
+
+* sugars
+* calories
+* fiber
+
+Insight umum:
+
+* Sebagian besar sereal memiliki kandungan **gula cukup tinggi**
+* Fiber cenderung rendah pada kebanyakan produk
+
+### 🔹 **Scatter Plot**
+
+Menampilkan hubungan antar variabel, misalnya hasil normalisasi:
+
+* sugar vs rating
+* sugar vs fiber
+
+Scatter plot membantu melihat pola umum seperti:
+
+* Gula tinggi cenderung berhubungan dengan rating rendah
+* Produk sehat biasanya muncul di area gula rendah
+
+### 🔹 **Bar Chart – Low Sugar vs High Sugar**
+
+Menggambarkan distribusi produk berdasarkan tingkat gula setelah normalisasi.
+
+---
+
+# 🧩 **4. Klasifikasi**
+
+Workflow menggunakan **dua klasifikasi deterministik** (bukan machine learning):
+
+### **1️⃣ Healthy vs Not Healthy**
+
+Berdasarkan kombinasi *high fiber* & *low sugar*.
+
+### **2️⃣ Low Sugar vs High Sugar**
+
+Berdasarkan nilai sugar setelah dinormalisasi.
+
+Pendekatan rule-based ini:
+
+* Tidak membutuhkan partitioning
+* Tidak membutuhkan decision tree
+* Mudah dipahami pemula
+* Cepat dan efektif untuk dataset nutrisi sederhana
+
+---
+
+# 📈 **5. Insight Utama**
+
+Beberapa temuan penting dari workflow:
+
+* Sereal **Healthy** jauh lebih sedikit dibanding **Not Healthy**
+* Mayoritas produk memiliki **fiber rendah** dan **gula tinggi**
+* Produk Low Sugar berdasarkan normalizer juga sangat sedikit
+* Scatter plot menunjukkan pola jelas:
+  gula ↑ → rating ↓
+* Histogram menegaskan bahwa banyak sereal didesain manis
 
 ---
 
 # 🏁 **6. Kesimpulan**
 
-Berdasarkan seluruh analisis dan visualisasi:
+Berdasarkan analisis:
 
-**Mayoritas produk sereal di pasaran tidak termasuk kategori HEALTHY**, terutama karena kandungan kalori dan gula yang cukup tinggi.
-Namun, masih ada sebagian produk yang lebih sehat—biasanya rendah kalori, rendah gula, dan memiliki sedikit serat tambahan.
-
-Visualisasi scatter plot, histogram, bar chart, dan pie chart memperlihatkan bahwa **nutrisi memiliki pengaruh nyata terhadap persepsi konsumen**, terutama gula dan kalori.
-Dengan workflow KNIME ini, pengguna dapat memahami pola nutrisi, mengelompokkan produk berdasarkan kesehatan, dan mendapatkan insight yang mudah untuk dipresentasikan atau digunakan dalam laporan.
-
----
-
+**Sebagian besar sereal di pasaran tidak masuk kategori Healthy**, karena tidak memenuhi syarat serat tinggi dan gula rendah.
+Visualisasi dan klasifikasi dalam workflow KNIME ini memberikan gambaran jelas mengenai kualitas nutrisi sereal serta membantu memahami pola hubungan antar variabel.
