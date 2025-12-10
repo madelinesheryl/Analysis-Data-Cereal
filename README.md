@@ -27,7 +27,7 @@ Workflow dibuat ringkas, modular, dan mudah dipahami sehingga cocok untuk pemula
 
 ```
 📦 Cereal-Analysis-KNIME
-├── cerealknwf.knwf     → workflow KNIME Modern UI
+├── cerealworkfloow.knwf     → workflow KNIME Modern UI
 ├── Cereals.csv             → dataset sereal
 ├── README.md               → dokumentasi proyek
 ```
