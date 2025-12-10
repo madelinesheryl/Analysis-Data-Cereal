@@ -94,7 +94,7 @@ Nilai ini tidak digunakan sebagai klasifikasi, tetapi membantu:
 Aturan yang digunakan:
 
 ```
-$fiber$ >= 5 AND $sugars$ <= 6 => "Healthy"
+$fiber$ >= 0.154 AND $sugars$ <= 0.468 => "Healthy"
 TRUE => "Not Healthy"
 ```
 
