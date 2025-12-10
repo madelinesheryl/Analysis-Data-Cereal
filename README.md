@@ -134,21 +134,7 @@ Hasilnya divisualisasikan dengan Bar Chart.
 
 ---
 
-# 🧩 **3. Klasifikasi**
-
-Workflow menggunakan **dua klasifikasi deterministik**:
-
-### **1️⃣ Healthy vs Not Healthy**
-
-Berdasarkan kombinasi *high fiber* & *low sugar*.
-
-### **2️⃣ Low Sugar vs High Sugar**
-
-Berdasarkan nilai sugar setelah dinormalisasi.
-
----
-
-# 📊 **4. Visualisasi**
+# 📊 **3. Visualisasi**
 
 ### 🔹 **Bar Chart – Healthy vs Not Healthy**
 
@@ -203,6 +189,20 @@ Beberapa temuan penting dari workflow:
 * Scatter plot menunjukkan pola jelas:
   gula ↑ → rating ↓
 * Histogram menegaskan bahwa banyak sereal didesain manis
+
+---
+
+# 🧩 **4. Klasifikasi**
+
+Workflow menggunakan **dua klasifikasi deterministik**:
+
+### **1️⃣ Healthy vs Not Healthy**
+
+Berdasarkan kombinasi *high fiber* & *low sugar*.
+
+### **2️⃣ Low Sugar vs High Sugar**
+
+Berdasarkan nilai sugar setelah dinormalisasi.
 
 ---
 
