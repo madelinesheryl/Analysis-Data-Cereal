@@ -188,13 +188,6 @@ Berdasarkan kombinasi *high fiber* & *low sugar*.
 
 Berdasarkan nilai sugar setelah dinormalisasi.
 
-Pendekatan rule-based ini:
-
-* Tidak membutuhkan partitioning
-* Tidak membutuhkan decision tree
-* Mudah dipahami pemula
-* Cepat dan efektif untuk dataset nutrisi sederhana
-
 ---
 
 # 📈 **5. Insight Utama**
