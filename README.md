@@ -134,27 +134,44 @@ Hasilnya divisualisasikan dengan Bar Chart.
 
 ---
 
-# 📊 **3. Visualisasi**
+# 🧩 **3. Klasifikasi**
+
+Workflow menggunakan **dua klasifikasi deterministik**:
+
+### **1️⃣ Healthy vs Not Healthy**
+
+Berdasarkan kombinasi *high fiber* & *low sugar*.
+
+### **2️⃣ Low Sugar vs High Sugar**
+
+Berdasarkan nilai sugar setelah dinormalisasi.
+
+---
+
+# 📊 **4. Visualisasi**
 
 ### 🔹 **Bar Chart – Healthy vs Not Healthy**
 
 Menampilkan jumlah produk pada kedua kategori menggunakan occuurence count
 - bar chart menunjukan lebih banyak cereal yang not healthy dibanding healthy
-<img width="1257" height="908" alt="image" src="https://github.com/user-attachments/assets/add0f303-6cfe-4676-b408-74b46c742c21" />
+<img src="barcharthealthy.png" width="700" height="400">
 
 ### 🔹 **Pie Chart**
 
 Memvisualisasikan presentase Healthy vs Not Healthy
 - Pie chart menunjukan 25.97% cereal healthy dan 74.03% cereal lainnya not healthy
-<img width="1254" height="907" alt="image" src="https://github.com/user-attachments/assets/e80fa1c2-c724-41ac-b00f-9a8f5ddace5c" />
+<img src="piecharthealthy.png" width="700" height="400">
 
 ### 🔹 **Histogram**
 
 Digunakan di sini untuk menampilkan distribusi variabel numerik fiber dan sugar
 Insight umum:
 * Sebagian besar sereal memiliki kandungan **gula cukup tinggi**
+
 <img src="histosugar.png" width="700">
+
 * Fiber cenderung rendah pada kebanyakan produk
+
 <img src="histofiber.png" width="700">
 
 ### 🔹 **Scatter Plot**
@@ -171,20 +188,8 @@ Scatter plot membantu melihat pola umum seperti:
 ### 🔹 **Bar Chart – Low Sugar vs High Sugar**
 
 Menggambarkan distribusi produk berdasarkan tingkat gula setelah normalisasi.
+- bar chart menunjukkan lebih banyak low sugar dibanding high sugar
 <img src="sugarlevel.png" width="600">
----
-
-# 🧩 **4. Klasifikasi**
-
-Workflow menggunakan **dua klasifikasi deterministik**:
-
-### **1️⃣ Healthy vs Not Healthy**
-
-Berdasarkan kombinasi *high fiber* & *low sugar*.
-
-### **2️⃣ Low Sugar vs High Sugar**
-
-Berdasarkan nilai sugar setelah dinormalisasi.
 
 ---
 
