@@ -138,12 +138,16 @@ Hasilnya divisualisasikan dengan Bar Chart.
 
 ### 🔹 **Bar Chart – Healthy vs Not Healthy**
 
-Menampilkan jumlah produk pada kedua kategori.
-Biasanya kategori **Not Healthy** lebih mendominasi.
+Menampilkan jumlah produk pada kedua kategori menggunakan occuurence count
+- healthy lebih sedikit dengan 27
+- not healthy lebih banyak dengan 57
+<img width="1257" height="908" alt="image" src="https://github.com/user-attachments/assets/add0f303-6cfe-4676-b408-74b46c742c21" />
 
 ### 🔹 **Pie Chart**
 
-Memvisualisasikan presentase Healthy vs Not Healthy.
+Memvisualisasikan presentase Healthy vs Not Healthy
+<img width="1254" height="907" alt="image" src="https://github.com/user-attachments/assets/e80fa1c2-c724-41ac-b00f-9a8f5ddace5c" />
+
 
 ### 🔹 **Histogram**
 
