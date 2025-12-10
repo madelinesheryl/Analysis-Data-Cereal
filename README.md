@@ -151,16 +151,11 @@ Memvisualisasikan presentase Healthy vs Not Healthy
 
 ### 🔹 **Histogram**
 
-Menampilkan distribusi variabel numerik seperti:
-
-* sugars
-* calories
-* fiber
-
+Digunakan di sini untuk menampilkan distribusi variabel numerik fiber dan sugar
 Insight umum:
-
 * Sebagian besar sereal memiliki kandungan **gula cukup tinggi**
 * Fiber cenderung rendah pada kebanyakan produk
+
 
 ### 🔹 **Scatter Plot**
 
