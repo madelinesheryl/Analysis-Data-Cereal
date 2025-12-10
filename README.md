@@ -139,45 +139,44 @@ Hasilnya divisualisasikan dengan Bar Chart.
 ### 🔹 **Bar Chart – Healthy vs Not Healthy**
 
 Menampilkan jumlah produk pada kedua kategori menggunakan occuurence count
-- healthy lebih sedikit dengan 27
-- not healthy lebih banyak dengan 57
+- bar chart menunjukan lebih banyak cereal yang not healthy dibanding healthy
 <img width="1257" height="908" alt="image" src="https://github.com/user-attachments/assets/add0f303-6cfe-4676-b408-74b46c742c21" />
 
 ### 🔹 **Pie Chart**
 
 Memvisualisasikan presentase Healthy vs Not Healthy
+- Pie chart menunjukan 25.97% cereal healthy dan 74.03% cereal lainnya not healthy
 <img width="1254" height="907" alt="image" src="https://github.com/user-attachments/assets/e80fa1c2-c724-41ac-b00f-9a8f5ddace5c" />
-
 
 ### 🔹 **Histogram**
 
 Digunakan di sini untuk menampilkan distribusi variabel numerik fiber dan sugar
 Insight umum:
 * Sebagian besar sereal memiliki kandungan **gula cukup tinggi**
+<img src="histosugar.png" width="700">
 * Fiber cenderung rendah pada kebanyakan produk
-
+<img src="histofiber.png" width="700">
 
 ### 🔹 **Scatter Plot**
 
-Menampilkan hubungan antar variabel, misalnya hasil normalisasi:
-
+Menampilkan hubungan antar variabel, hasil normalisasi sugar vs rating:
 * sugar vs rating
-* sugar vs fiber
+<img src="scatterplot.png" width="600">
 
 Scatter plot membantu melihat pola umum seperti:
-
 * Gula tinggi cenderung berhubungan dengan rating rendah
+* Gula rendah lebih tinggi ratingnya
 * Produk sehat biasanya muncul di area gula rendah
 
 ### 🔹 **Bar Chart – Low Sugar vs High Sugar**
 
 Menggambarkan distribusi produk berdasarkan tingkat gula setelah normalisasi.
-
+<img src="sugarlevel.png" width="600">
 ---
 
 # 🧩 **4. Klasifikasi**
 
-Workflow menggunakan **dua klasifikasi deterministik** (bukan machine learning):
+Workflow menggunakan **dua klasifikasi deterministik**:
 
 ### **1️⃣ Healthy vs Not Healthy**
 
